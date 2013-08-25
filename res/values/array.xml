@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<array name="cards">
+		<item>@drawable/kiri_black</item>
+		<item>@drawable/select</item>
+		<item>@drawable/kiri_r01</item>
+		<item>@drawable/kiri_r02</item>
+		<item>@drawable/kiri_r03</item>
+		<item>@drawable/kiri_r04</item>
+		<item>@drawable/kiri_r05</item>
+		<item>@drawable/kiri_r06</item>
+		<item>@drawable/kiri_r07</item>
+		<item>@drawable/kiri_r08</item>
+		<item>@drawable/kiri_r09</item>
+		<item>@drawable/kiri_r10</item>
+		<item>@drawable/kiri_r11</item>
+		<item>@drawable/kiri_r12</item>
+		<item>@drawable/kiri_y01</item>
+		<item>@drawable/kiri_y02</item>
+		<item>@drawable/kiri_y03</item>
+		<item>@drawable/kiri_y04</item>
+		<item>@drawable/kiri_y05</item>
+		<item>@drawable/kiri_y06</item>
+		<item>@drawable/kiri_y07</item>
+		<item>@drawable/kiri_y08</item>
+		<item>@drawable/kiri_y09</item>
+		<item>@drawable/kiri_y10</item>
+		<item>@drawable/kiri_y11</item>
+		<item>@drawable/kiri_y12</item>
+		<item>@drawable/kiri_g01</item>
+		<item>@drawable/kiri_g02</item>
+		<item>@drawable/kiri_g03</item>
+		<item>@drawable/kiri_g04</item>
+		<item>@drawable/kiri_g05</item>
+		<item>@drawable/kiri_g06</item>
+		<item>@drawable/kiri_g07</item>
+		<item>@drawable/kiri_g08</item>
+		<item>@drawable/kiri_g09</item>
+		<item>@drawable/kiri_g10</item>
+		<item>@drawable/kiri_g11</item>
+		<item>@drawable/kiri_g12</item>
+		<item>@drawable/kiri_v01</item>
+		<item>@drawable/kiri_v02</item>
+		<item>@drawable/kiri_v03</item>
+		<item>@drawable/kiri_v04</item>
+		<item>@drawable/kiri_v05</item>
+		<item>@drawable/kiri_v06</item>
+		<item>@drawable/kiri_v07</item>
+		<item>@drawable/kiri_v08</item>
+		<item>@drawable/kiri_v09</item>
+		<item>@drawable/kiri_v10</item>
+		<item>@drawable/kiri_v11</item>
+		<item>@drawable/kiri_v12</item>
+		<item>@drawable/kiri_gim_04</item>
+		<item>@drawable/kiri_gim_05_1</item>
+		<item>@drawable/kiri_gim_06_1</item>
+		<item>@drawable/kiri_gim_08_1</item>
+		<item>@drawable/kiri_gim_09</item>
+		<item>@drawable/kiri_usa_r</item>
+		<item>@drawable/kiri_usa_b</item>
+		<item>@drawable/kiri_black</item>
+	</array>
+
+	<array name="count">
+		<item>@drawable/c0</item>
+		<item>@drawable/c1</item>
+		<item>@drawable/c2</item>
+		<item>@drawable/c3</item>
+		<item>@drawable/c4</item>
+		<item>@drawable/c5</item>
+		<item>@drawable/c6</item>
+		<item>@drawable/c7</item>
+		<item>@drawable/c8</item>
+		<item>@drawable/c9</item>
+		<item>@drawable/cardleft</item>
+	</array>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    android:orderingFromXml="true">
+    <PreferenceCategory android:title = "aa">
+        <CheckBoxPreference android:title = "CheckTest"
+            android:summary = "er"
+            android:summaryOff="is off"
+            android:summaryOn="is on"
+            android:key="r">
+        </CheckBoxPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:id="@+id/widget0"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/rasha_g"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/Title"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/title"
+        android:src="@drawable/c"
+        android:layout_weight="0.5"/>
+
+    <Button
+        android:id="@+id/mButton_start"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="@string/button_start"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/mButton_continue"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="@string/button_continue"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/mButton_config"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="@string/button_config"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/mButton_exit"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="@string/button_exit"
+        android:layout_weight="1"/>
+
+</LinearLayout>

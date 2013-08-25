@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Trump</string>
+	<string name="hello_world">Hello world!</string>
+	<string name="menu_settings">Settings</string>
+
+	<string name="title">タイトル画像</string>
+	<string name="button_start">New Game</string>
+	<string name="button_continue">Continue</string>
+	<string name="button_config">Config</string>
+	<string name="button_exit">Exit</string>
+
+	<string name="button_attack">Attack</string>
+	<string name="button_pass">Pass</string>
+	<string name="button_help">Help</string>
+
+	<string name="button_yes">はい</string>
+	<string name="button_no">いいえ</string>
+
+	<string name="button_again">もっかい</string>
+	<string name="button_quit">つかれた</string>
+
+	<string name="h_gimmic_4">ギミック4 : 望月札</string>
+	<string name="h_gimmic_4_exp">一枚のうさぎ札に対抗して場を切ることができる。</string>
+	<string name="h_gimmic_5_1">ギミック5 : 五色札</string>
+	<string name="h_gimmic_5_1_exp">（複数出しでも効果を発揮）\nどの色の5としても使える。</string>
+	<string name="h_gimmic_6_1">ギミック6 : 大入り札</string>
+	<string name="h_gimmic_6_1_exp">出した後、手札か場札からいらない札を一枚捨てられる。うさぎ札は捨てられない。</string>
+	<string name="h_gimmic_7_1">ギミック7 : 団扇札</string>
+	<string name="h_gimmic_7_1_exp">裏向きになっている札を一枚、どれでもめくることができる。</string>
+	<string name="h_gimmic_8_1">ギミック8 : 切ない札</string>
+	<string name="h_gimmic_8_1_exp">（複数出しでも効果？を発揮）\n8なのに「きれ」ない、「せつ」ない札。</string>
+	<string name="h_gimmic_9">ギミック9 : 霞札</string>
+	<string name="h_gimmic_9_exp">8切りを無効にして続ける。てんどん中に出すと、はさみ札が出せなくなる。</string>
+	<string name="h_gimmic_usa">うさぎ札</string>
+	<string name="h_gimmic_usa_exp">一枚ならいつでも最強。他のカードと合わせて出すときは任意の札として使える。\nうさぎ札上がりは反則負けなので注意。</string>
+	<string name="h_gimmic_black">暗黒札</string>
+	<string name="h_gimmic_black_exp">いつでも最弱なので場が切れた直後しか出せない。\nしかも出すと藪を引かされるわ場が切れて強制的に相手からのスタートになるわで散々。</string>
+
+	<string name="h_red">赤の</string>
+	<string name="h_yellow">黄の</string>
+	<string name="h_green">緑の</string>
+	<string name="h_violet">紫の</string>
+
+	<string name="h_footer">の札</string>
+	<string name="h_normal_exp">特別な効果のない札。</string>
+	<string name="h_n1_exp">とりあえず最弱。がんばれ。負けるな。\nてんどんすると一転してありがたがられる。</string>
+	<string name="h_n8_exp">8ははさみで、一枚で出せば場を切ることができる。</string>
+	<string name="h_n12_exp">一応、最強。12で上がっても反則にはならない。</string>
+
+	<string name="h_ura">裏向きの札</string>
+	<string name="h_ura_exp">めくってみるまで分かりません。もしかしたら暗黒札かも。</string>
+
+	<string name="i_empty">メッセージなし</string>
+	<string name="i_msg_empty">メッセージがありません</string>
+	<string name="i_atk_ankoku">暗黒札発動！</string>
+	<string name="i_atk_ankoku_msg">藪（画面左の伏せ札）を一枚選んでAttackで手札に入れてください。</string>
+	<string name="i_atk_ooiri">大入札発動！</string>
+	<string name="i_atk_ooiri_msg">札を一枚選んでAttackで捨てられます。\nPassで捨てずに終わることもできます。</string>
+
+	<string name="q_atk_tendon">てんどんできます</string>
+	<string name="q_atk_tendon_msg">てんどん（革命）しますか？</string>
+
+	<string name="q_win">勝利!!</string>
+	<string name="q_win_msg">おめでとうございます!!\nもう一戦しますか？</string>
+	<string name="q_lose">残念…</string>
+	<string name="q_lose_msg">また次がんばりましょう。\nもう一戦しますか？</string>
+
+	<string name="w_atk_tooWeak">札組が弱いです</string>
+	<string name="w_atk_tooWeak_msg">場より強い札を出してください。</string>
+	<string name="w_atk_numberNotMatch">枚数合わず</string>
+	<string name="w_atk_numberNotMatch_msg">札組の枚数が合いません。</string>
+	<string name="w_atk_badStairs">階段エラー</string>
+	<string name="w_atk_badStairs_msg">階段ではないのに階段を選んだか、階段縛りなのに階段でない役を選んでいます。</string>
+	<string name="w_atk_irregalMatches">正しくない手</string>
+	<string name="w_atk_irregalMatches_msg">札の出し方が不正です。</string>
+	<string name="w_atk_usagiSolo">うさぎ札が1枚で出ています</string>
+	<string name="w_atk_usagiSolo_msg">望月札(4のギミック)以外は出せません。</string>
+	<string name="w_atk_hasami">はさみ札が1枚で出ています</string>
+	<string name="w_atk_hasami_msg">霞札(9のギミック)以外は出せません。</string>
+	<string name="w_atk_noCards">札がありません</string>
+	<string name="w_atk_noCards_msg">札が選択されていませんが、パスしてよろしいですか？</string>
+	<string name="w_pas_cantPass">相手が全員パスしています</string>
+	<string name="w_pas_cantPass_msg">あなたがスタートプレイヤーなので、パスできません。</string>
+
+	<string name="w_atk_ankokuE">暗黒札発動中</string>
+	<string name="w_atk_ankokuE_msg">藪は一枚だけ選択してください。この効果は強制なのでPassはできません。</string>
+	<string name="w_atk_ooiriE">大入札発動中</string>
+	<string name="w_atk_ooiriE_msg">捨てられるのは手札か現在出せる場札の中から一枚だけです。\nまたうさぎ札は捨てられません。</string>
+
+
+
+</resources>
