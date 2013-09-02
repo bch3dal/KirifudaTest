@@ -2,7 +2,7 @@
 <resources>
 	<array name="cards">
 		<item>@drawable/kiri_black</item>
-		<item>@drawable/select</item>
+		<item>@drawable/kiri_select</item>
 		<item>@drawable/kiri_r01</item>
 		<item>@drawable/kiri_r02</item>
 		<item>@drawable/kiri_r03</item>
@@ -51,11 +51,11 @@
 		<item>@drawable/kiri_v10</item>
 		<item>@drawable/kiri_v11</item>
 		<item>@drawable/kiri_v12</item>
-		<item>@drawable/kiri_gim_04</item>
-		<item>@drawable/kiri_gim_05_1</item>
-		<item>@drawable/kiri_gim_06_1</item>
-		<item>@drawable/kiri_gim_08_1</item>
-		<item>@drawable/kiri_gim_09</item>
+		<item>@drawable/kiri_gim04</item>
+		<item>@drawable/kiri_gim05_1</item>
+		<item>@drawable/kiri_gim06_1</item>
+		<item>@drawable/kiri_gim08_1</item>
+		<item>@drawable/kiri_gim09</item>
 		<item>@drawable/kiri_usa_r</item>
 		<item>@drawable/kiri_usa_b</item>
 		<item>@drawable/kiri_black</item>

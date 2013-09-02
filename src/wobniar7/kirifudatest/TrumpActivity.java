@@ -10,9 +10,13 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class TrumpActivity extends FragmentActivity
 	implements OnClickListener {
@@ -20,9 +24,8 @@ public class TrumpActivity extends FragmentActivity
 	private GestureDetector gesDetect;
 	private TrumpView view;
 
-	private Button btnAttack;
-	private Button btnPass;
-	private Button btnHelp;
+	private ImageButton btnOK, btnPass, btnInfo;
+	private Button btnCancel, btnPause;
 
 	private Resources r;
 
@@ -35,18 +38,32 @@ public class TrumpActivity extends FragmentActivity
 
 		setContentView(R.layout.game);
 
-		btnAttack = (Button) findViewById(R.id.button1);
-		btnPass = (Button) findViewById(R.id.button2);
-		btnHelp = (Button) findViewById(R.id.button3);
-		btnAttack.setOnClickListener(this);
+		btnOK = (ImageButton) findViewById(R.id.button1);
+		btnPass = (ImageButton) findViewById(R.id.button2);
+		btnInfo = (ImageButton) findViewById(R.id.button3);
+		btnOK.setOnClickListener(this);
 		btnPass.setOnClickListener(this);
-		btnHelp.setOnClickListener(this);
-		btnAttack.setEnabled(true);
+		btnInfo.setOnClickListener(this);
+		btnOK.setEnabled(true);
 		btnPass.setEnabled(true);
-		btnHelp.setEnabled(true);
+		btnInfo.setEnabled(true);
 
 		gesDetect = new GestureDetector(this, simpleOnGestureListener);
 		view = (TrumpView)this.findViewById(R.id.TrumpView);
+
+
+		int cbw = view.cPanelWidth(), cbh = (int)(view.cButtonHeight() * cbw / (double)view.cButtonWidth());
+
+		//札組情報ボタンは適当に動かす
+		MarginLayoutParams p = new MarginLayoutParams(cbw, cbh);
+		p.setMargins(view.cPanelMarginL(), view.cPanelMarginT() - cbh, 0, 0);
+		RelativeLayout.LayoutParams paramsR = new RelativeLayout.LayoutParams(p);
+		btnInfo.setLayoutParams(paramsR);
+
+		LinearLayout.LayoutParams paramsL = new LinearLayout.LayoutParams(cbw, cbh);
+		btnOK.setLayoutParams(paramsL);
+		btnPass.setLayoutParams(paramsL);
+
 	}
 
 	public void onClick(View v) {
@@ -126,6 +143,7 @@ public class TrumpActivity extends FragmentActivity
 			Log.d("onClick", "Pass!");
 			break;
 		case R.id.button3:
+			showInfo(view.getField().top, view.getField().tendon, 0);
 			Log.d("onClick", "Help!");
 			break;
 		}
@@ -209,6 +227,123 @@ public class TrumpActivity extends FragmentActivity
 		af.initialize(c, level, title, msg);
 		af.show(fm, "alert_dialog");
 	}
+
+	private void showInfo(int[] top, boolean tendon, int level) {
+		FragmentManager fm = getSupportFragmentManager();
+		ExpFragment af = new ExpFragment();
+		//top[0] - num, top[1] - cards
+		String title = "現在の札組: ";
+		String msg = "";
+
+		//返せる数字
+		int strong = top[0] + 1;
+		String compair = r.getString(R.string.ci_ge);
+		String pair = "";
+		String tail = r.getString(R.string.ci_tail_set);
+		if (strong > 13)
+			tail = r.getString(R.string.ci_tail_unable);
+
+		switch(top[3]) {
+			case Field.STATE_PLAYER:
+				msg = msg.concat("あなたの手番です。\n");
+				break;
+			case Field.STATE_COMPUTER:
+				msg = msg.concat("コンピュータの手番です。\n");
+				break;
+			default:
+		}
+
+		if (tendon) {
+			msg = msg.concat("!てんどん中!\n");
+			strong = top[0] - 1;
+			compair = r.getString(R.string.ci_le);
+			if (strong < 1)
+				tail = r.getString(R.string.ci_tail_unable);
+		}
+
+		if (top[1] >= 2) {
+			//同じ数字
+			if (top[2] == -1)
+				pair = r.getString(R.string.ci_pair);
+			//階段
+			else if (tail != r.getString(R.string.ci_tail_unable))
+				tail = r.getString(R.string.ci_tail_seq);
+		}
+
+		switch(top[1]) {
+			case 0:
+				title = title.concat("なし");
+				msg = msg.concat("どんな札組でも出せます。");
+				break;
+			case 1:
+				//暗黒札
+				if (top[0] == 0) {
+					title = title.concat("暗黒札");
+				}
+				//うさぎ札
+				else if (top[0] == 13) {
+					title = title.concat("うさぎ札(単品)");
+					msg = msg.concat("望月札(ギミック4)でだけ対抗できます。");
+				}
+				//そのほか
+				else {
+					if(top[2] < 5 && top[0] == 8) {
+						title = title.concat("はさみ札(8切り)");
+					}
+					else {
+						title = title.concat(top[0] + "のスイチ(1枚)");
+						msg = msg.concat(strong + compair + pair + 1 + tail);
+					}
+				}
+				break;
+			case 2:
+				title = title.concat(top[0] + "のゾロ(2枚)");
+				msg = msg.concat(strong + compair + pair + 2 + tail);
+				break;
+			case 3:
+				//ゾロ目の場合
+				if (top[2] == -1)
+					title = title.concat(top[0] + "のアラシ(3枚)");
+				//階段の場合
+				else
+					title = title.concat(top[0] + "の3枚階段");
+				msg = msg.concat(strong + compair + pair + 3 + tail);
+				break;
+			case 4:
+				if (top[2] == -1)
+					title = title.concat(top[0] + "のてんどん(4枚)");
+				//階段の場合
+				else
+					title = title.concat(top[0] + "の4枚階段");
+				msg = msg.concat(strong + compair + pair + 4 + tail);
+				break;
+			default:
+				if (top[2] == -1)
+					title = title.concat(top[0] + "のうなどん(" + top[1] +"枚)");
+				//階段の場合
+				else
+					title = title.concat(top[0] + "の" + top[1] + "枚階段");
+				msg = msg.concat(strong + compair + pair + top[1] + tail);
+		}
+		switch(top[4]) {
+			case Field.STATE_HASAMI:
+				msg = msg.concat(r.getString(R.string.ci_tstate_hasami));
+				break;
+			case Field.STATE_SOLOUSAGI:
+				msg = msg.concat(r.getString(R.string.ci_tstate_solousagi));
+				break;
+			case Field.STATE_ANKOKU:
+				msg = msg.concat(r.getString(R.string.ci_tstate_ankoku));
+				break;
+			case Field.STATE_OOIRI:
+				msg = msg.concat(r.getString(R.string.ci_tstate_ooiri));
+				break;
+			default:
+		}
+		af.initialize(null, level, title, msg);
+		af.show(fm, "alert_dialog");
+	}
+
 	private void showAlert(int level, String title, String msg, Field field, int sig) {
 		FragmentManager fm = getSupportFragmentManager();
 		YesNoFragment ynf = new YesNoFragment();

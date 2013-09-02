@@ -17,7 +17,14 @@ public class Field {
 	public static final int CARD_TOTALNUM = 56;
 
 	private static final Bitmap[] cardSet = new Bitmap[CARD_TOTALNUM];
+	private static final Bitmap[] cardSetI = new Bitmap[CARD_TOTALNUM];
+	private static final Bitmap[] cardSetL = new Bitmap[CARD_TOTALNUM];
 	private static final Bitmap[] cardSetR = new Bitmap[CARD_TOTALNUM];
+	private static final Bitmap[] cardSetmini = new Bitmap[CARD_TOTALNUM];
+	private static final Bitmap[] cardSetminiI = new Bitmap[CARD_TOTALNUM];
+	private static final Bitmap[] cardSetminiL = new Bitmap[CARD_TOTALNUM];
+	private static final Bitmap[] cardSetminiR = new Bitmap[CARD_TOTALNUM];
+
 
 	public final Bitmap[] counter = new Bitmap[10];
 	public  Bitmap        countbg;
@@ -78,7 +85,7 @@ public class Field {
 	public final int dstWidth, dstHeight;
 	private final float windowWidth, windowHeight;
 	private final int myHandY;
-	private final int[] trashArea = new int[4];
+	public final int[] trashArea = new int[4];
 
 	int plaPileX, plaPileY, comPileX, comPileY;
 
@@ -93,7 +100,6 @@ public class Field {
 		backR = ((BitmapDrawable) cimg.getDrawable(0)).getBitmap();
 		select = ((BitmapDrawable) cimg.getDrawable(1)).getBitmap();
 
-		Matrix matrix = new Matrix(), matrixR = new Matrix(), matrixC = new Matrix();
 		srcWidth = back.getWidth();
 		srcHeight = back.getHeight();
 		windowWidth = w;
@@ -101,12 +107,16 @@ public class Field {
 
 		final float widthScale = w / srcWidth / cardNumW;
 		final float heightScale = h / srcHeight / cardNumH;
-
 		final float scale = Math.min(widthScale, heightScale);
+
+		//変換行列（フル、フル逆、手札カウンター）
+		Matrix matrix = new Matrix(), matrixR = new Matrix(), matrixC = new Matrix();
 		matrix.postScale(scale, scale);
 		matrixR.postScale(scale, scale);
-		matrixC.postScale(scale / 2, scale / 2);
 		matrixR.postRotate(180);
+		matrixC.postScale(scale / 2, scale / 2);
+
+		//カード裏、カード裏逆、選択時カーソル
 		back = Bitmap.createBitmap(back, 0, 0, srcWidth, srcHeight, matrix, true);
 		backR = Bitmap.createBitmap(backR, 0, 0, srcWidth, srcHeight, matrixR, true);
 		select = Bitmap.createBitmap(select, 0, 0, srcWidth, srcHeight, matrix, true);
@@ -114,12 +124,10 @@ public class Field {
 		dstWidth = back.getWidth();
 		dstHeight = back.getHeight();
 		myHandY = (int)(windowHeight) - dstHeight - 10;
-
 		plaPileX = dstWidth + 20;
 		plaPileY = (int)(windowHeight) - (dstHeight * 3 + 20);
 		comPileX = (int)windowWidth - (dstWidth + 10);
 		comPileY = dstHeight + 10;
-
 		trashArea[0] = plaPileX;
 		trashArea[1] = comPileY + dstHeight + 10;
 		trashArea[2] = (dstWidth + 10) * 2;
@@ -128,7 +136,6 @@ public class Field {
 		//コンピュータの手札を数える機構
 		countbg = ((BitmapDrawable) simg.getDrawable(10)).getBitmap();
 		countbg = Bitmap.createBitmap(countbg, 0, 0, srcWidth, srcHeight, matrix, true);
-
 		for(int i = 0;i < 10; i++){
 			counter[i] = ((BitmapDrawable) simg.getDrawable(i)).getBitmap();
 			counter[i] = Bitmap.createBitmap(counter[i], 0, 0, counter[i].getWidth(), counter[i].getHeight(), matrixC, true);
@@ -138,9 +145,10 @@ public class Field {
 		for(int i = 0;i < CARD_TOTALNUM; i++){
 			cardSet[i] = ((BitmapDrawable) cimg.getDrawable(i+2)).getBitmap();
 			cardSet[i] = Bitmap.createBitmap(cardSet[i], 0, 0, srcWidth, srcHeight, matrix, true);
-			cardSetR[i] = ((BitmapDrawable) cimg.getDrawable(i+2)).getBitmap();
-			cardSetR[i] = Bitmap.createBitmap(cardSetR[i], 0, 0, srcWidth, srcHeight, matrixR, true);
+			cardSetI[i] = ((BitmapDrawable) cimg.getDrawable(i+2)).getBitmap();
+			cardSetI[i] = Bitmap.createBitmap(cardSetI[i], 0, 0, srcWidth, srcHeight, matrixR, true);
 		}
+
 		for(int i = 0; i < trash.length; i++)
 			trash[i] = new Card(back, 0, 0, 0, Card.USED);
 		init();
@@ -178,7 +186,7 @@ public class Field {
 			for (int j = 0; j < 4; j++) {
 				pileP[i][j] = new Card(cardSet[deck[i*8+j*2] - 1],
 						plaPileX + (dstWidth + 10) * j, plaPileY + (int)(dstHeight * i / 3.5), deck[i*8+j*2], s);
-				pileC[i][j] = new Card(cardSetR[deck[i*8+j*2+1] - 1],
+				pileC[i][j] = new Card(cardSetI[deck[i*8+j*2+1] - 1],
 						comPileX - (dstWidth + 10) * j, comPileY - (int)(dstHeight * i / 3.5), deck[i*8+j*2+1], s);
 				//TODO 暗黒札とうさぎ札を記録するところがない
 				//Cmap[pileP[i][j].getColor() - 1][pileP[i][j].getNum() - 1] = 10 * i + j;
@@ -196,7 +204,7 @@ public class Field {
 			//自分と相手の手札を交互に配る
 			handP[i] = new Card(cardSet[deck[i*2+36] - 1],
 					(int)(dstWidth * 0.35 * i) + 10, myHandY, deck[i*2+36], Card.MAYUSE);
-			handC[i] = new Card(cardSetR[deck[i*2+37] - 1], -1, -1, deck[i*2+37], Card.BLACKBACK);
+			handC[i] = new Card(cardSetI[deck[i*2+37] - 1], -1, -1, deck[i*2+37], Card.BLACKBACK);
 			//TODO 暗黒札とうさぎ札を記録するところがない
 			//			Cmap[handP[i].getColor() - 1][handP[i].getNum() - 1] = 50 + i;
 			//			Cmap[handC[i].getColor() - 1][handC[i].getNum() - 1] = 150 * i;

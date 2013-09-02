@@ -33,7 +33,6 @@ public class TrumpView extends SurfaceView
 	Matrix matrix_bg   = new Matrix();
 	final int bgWidth = bg.getWidth();
 	final int bgHeight = bg.getHeight();
-
 	Bitmap winBack = BitmapFactory.decodeResource(getResources(), R.drawable.win);
 	Bitmap loseBack = BitmapFactory.decodeResource(getResources(), R.drawable.lose);
 	Matrix matrix_logo   = new Matrix();
@@ -43,6 +42,8 @@ public class TrumpView extends SurfaceView
 	//カードを配列にしたものを受け取る
 	TypedArray cardImages = getResources().obtainTypedArray(R.array.cards);
 	TypedArray countImages = getResources().obtainTypedArray(R.array.count);
+
+	private int scW;
 
 
 	public TrumpView(Context context) {
@@ -69,6 +70,9 @@ public class TrumpView extends SurfaceView
 			screenWidth = disp.getWidth();
 			screenHeight = disp.getHeight();
 		}
+		scW = (int)screenWidth;
+
+		Log.v("view",screenWidth+" "+screenHeight);
 
 		//ゲームフィールドを生成
 		field = new Field(screenWidth, screenHeight, cardImages, countImages);
@@ -83,6 +87,32 @@ public class TrumpView extends SurfaceView
         holder = getHolder();
         holder.addCallback(this);
         holder.setFixedSize(getWidth(), getHeight());
+	}
+
+
+	//右下コントロールボタンの幅を返す
+	public int cButtonWidth() {
+		Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.button_ok_enabled);
+		return b.getWidth();
+	}
+	public int cButtonHeight() {
+		Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.button_ok_enabled);
+		return b.getHeight();
+	}
+
+	//右下コントロールボタンの幅を返す
+	public int cPanelWidth() {
+		return scW - (int)(field.dstWidth * 4.15) - 30;
+	}
+
+	//札組ボタンの左マージンを返す(人数ごとに変える)
+	public int cPanelMarginL() {
+		return field.trashArea[0] + field.trashArea[2] + field.dstWidth - 10;
+	}
+
+	//札組ボタンの上マージンを返す(人数ごとに変える)
+	public int cPanelMarginT() {
+		return field.trashArea[1] + field.trashArea[3] + field.dstHeight;
 	}
 
 

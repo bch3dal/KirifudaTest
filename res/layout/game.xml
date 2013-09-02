@@ -8,30 +8,41 @@
 		android:id="@+id/TrumpView"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" />
-
+	<ImageButton
+		android:id="@+id/button3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginRight="10dp"
+		android:layout_marginBottom="10dp"
+		android:background="@drawable/button3"
+		android:contentDescription="@string/button_info">
+	</ImageButton>
 	<LinearLayout
 		android:id="@+id/linearLayout1"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
 		android:layout_alignParentRight="true"
+		android:layout_marginBottom="10dp"
+		android:layout_marginRight="10dp"
 		android:orientation="vertical" >
-
-		<Button
-			android:id="@+id/button1"
+		<ImageButton
+		    android:id="@+id/button1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@+string/button_attack" />
-		<Button
+			android:background="@drawable/button1"
+			android:contentDescription="@string/button_ok">
+		</ImageButton>
+		<ImageButton
 			android:id="@+id/button2"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@+string/button_pass" />
-		<Button
-			android:id="@+id/button3"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@+string/button_help" />
+			android:background="@drawable/button2"
+			android:layout_marginTop="10dp"
+			android:contentDescription="@string/button_pass">
+		</ImageButton>
     </LinearLayout>
 
 </RelativeLayout>

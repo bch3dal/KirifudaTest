@@ -11,9 +11,9 @@
 	<string name="button_config">Config</string>
 	<string name="button_exit">Exit</string>
 
-	<string name="button_attack">Attack</string>
-	<string name="button_pass">Pass</string>
-	<string name="button_help">Help</string>
+	<string name="button_ok">決定</string>
+	<string name="button_pass">パス</string>
+	<string name="button_info">情報</string>
 
 	<string name="button_yes">はい</string>
 	<string name="button_no">いいえ</string>
@@ -51,6 +51,19 @@
 
 	<string name="h_ura">裏向きの札</string>
 	<string name="h_ura_exp">めくってみるまで分かりません。もしかしたら暗黒札かも。</string>
+
+	<string name="ci_ge">以上の</string>
+	<string name="ci_le">以下の</string>
+	<string name="ci_pair">同じ数字</string>
+	<string name="ci_tail_set">枚で対抗できます。\n</string>
+	<string name="ci_tail_seq">枚階段で対抗できます。\n</string>
+	<string name="ci_tail_unable">この札組は今の数字で最強なので、これ以上対抗できません。\n</string>
+
+
+	<string name="ci_tstate_hasami">基本的に対抗できませんが、霞札(ギミック9)でのみ、8切り無効で続行できます。\n</string>
+	<string name="ci_tstate_solousagi">基本的に対抗できませんが、望月札(ギミック4)でのみ対抗できます。\n</string>
+	<string name="ci_tstate_ankoku">藪から1枚選んで手札にいれてください。\n</string>
+	<string name="ci_tstate_ooiri">捨てたい札を1枚選び、決定で捨てます。パスを押すと捨てずに終了します。\n</string>
 
 	<string name="i_empty">メッセージなし</string>
 	<string name="i_msg_empty">メッセージがありません</string>

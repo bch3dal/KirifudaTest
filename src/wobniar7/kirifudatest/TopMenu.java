@@ -28,7 +28,7 @@ public class TopMenu extends Activity
 		button2.setOnClickListener(this);
 		button3.setOnClickListener(this);
 		button4.setOnClickListener(this);
-		}
+	}
 
 	@Override
 	public void onClick(View view){
